@@ -1,0 +1,30 @@
+{
+  "name": "form-validation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-env": "^1.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rmdir /s /q dist",
+    "build": "mkdir dist && babel src -s -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesleyguirra/furry-happiness.git"
+  },
+  "author": "Wesley Guirra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wesleyguirra/furry-happiness/issues"
+  },
+  "homepage": "https://github.com/wesleyguirra/furry-happiness#readme"
+}

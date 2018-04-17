@@ -1,48 +1,3 @@
-const form = document.getElementById("formulario_teste");
-
-/**
- * Adicionado EventListener para capturar o envio do form com enter
- */
-if (form.addEventListener) {
-    form.addEventListener("submit", validateForm(form));
-} else if (form.attachEvent) {
-    /*
-     * O addEventListener não é suportado em versões mais antigas do IE,
-     * por isso estou verificando o attachEvent também.
-     * https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Browser_compatibility
-     */
-    form.attachEvent("onsubmit", validateForm(form));
-}
-
-
-/**
- *
- * @param form Recebe o formulário que será validado
- */
-function validateForm (form) {
-    /**
-     *
-     * @type {*[]} Array com os objetos dos campos do formulário
-     */
-    const form_fields = [].slice.call(form.querySelectorAll('select, input:not([type=radio]):not([type=checkbox])') || []);
-
-    validateEmptyFields(form_fields);
-
-    validateFieldsFormat(form_fields);
-}
-
-/**
- *
- * @param fields Os campos que serão checados
- */
-function validateEmptyFields(fields) {
-    for (field of fields) {
-        if (isEmptyValue(field.value)) {
-            field.offsetParent.lastElementChild.innerHTML = "Campo Obrigatório!";
-        }
-    }
-}
-
 /**
  *
  * @param fields Os campos que serão validados
@@ -71,7 +26,7 @@ function validateFieldsFormat(fields) {
                     : console.log("campo Email Validado");
                 break;
         }
-    } 
+    }
 }
 
 /**
@@ -136,13 +91,4 @@ function isCpfFormat(cpf) {
     return RegExp.test(cpf);
 }
 
-/**
- *
- * @param value Valor para comparação com uma string vazia ou null
- * @returns {boolean} retorna true se a string está vazia
- */
-function isEmptyValue(value) {
-    if (value === "" || value == null) {
-        return true;
-    }
-}
+export default validateFieldsFormat();
