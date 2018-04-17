@@ -21,4 +21,4 @@ function isEmptyValue(value) {
     }
 }
 
-export default validateEmptyFields();
+export default validateEmptyFields;

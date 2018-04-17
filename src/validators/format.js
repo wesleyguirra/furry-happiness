@@ -91,4 +91,4 @@ function isCpfFormat(cpf) {
     return RegExp.test(cpf);
 }
 
-export default validateFieldsFormat();
+export default validateFieldsFormat;
