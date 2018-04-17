@@ -31,6 +31,22 @@ function validateForm (form) {
     validateFieldsFormat(form_fields);
 }
 
+/**
+ *
+ * @param fields Os campos que serão checados
+ */
+function validateEmptyFields(fields) {
+    for (field of fields) {
+        if (isEmptyValue(field.value)) {
+            field.offsetParent.lastElementChild.innerHTML = "Campo Obrigatório!";
+        }
+    }
+}
+
+/**
+ *
+ * @param fields Os campos que serão validados
+ */
 function validateFieldsFormat(fields) {
     for (field of fields) {
         switch (field.name) {
@@ -40,20 +56,23 @@ function validateFieldsFormat(fields) {
                     : console.log("campo CPF Validado");
                 break;
             case "name":
-                validateFullName(field.value);
+                (!isFullName(field.value))
+                    ? field.offsetParent.lastElementChild.innerHTML = "Digite o Nome Completo"
+                    : console.log("campo Nome Validado");
                 break;
             case "obs":
-                validateObs(field.value);
+                (!isLengthSixthy(field.value))
+                    ? field.offsetParent.lastElementChild.innerHTML = "Máximo de caracteres excedido: " + field.value.length
+                    : console.log("campo Obs Validado");
                 break;
             case "email":
-                validateEmail(field.value);
+                (!isValidEmail(field.value))
+                    ? field.offsetParent.lastElementChild.innerHTML = "Digite um email válido"
+                    : console.log("campo Email Validado");
                 break;
-            default:
-                return;
         }
     } 
 }
-
 
 /**
  *
@@ -115,18 +134,6 @@ function isCpfFormat(cpf) {
     const RegExp = /^[\d]{3}\.[\d]{3}\.[\d]{3}\-[\d]{2}$/;
 
     return RegExp.test(cpf);
-}
-
-/**
- *
- * @param fields Os campos que serão checados
- */
-function validateEmptyFields(fields) {
-    for (field of fields) {
-        if (isEmptyValue(field.value)) {
-            field.offsetParent.lastElementChild.innerHTML = "Campo Obrigatório!";
-        }
-    }
 }
 
 /**
