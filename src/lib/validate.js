@@ -2,8 +2,9 @@
  *
  * @param fields Os campos que serão validados
  */
-function validateFieldsFormat(fields) {
-    for (field of fields) {
+function FieldsFormat(fields) {
+    for (value of fields) {
+        const field = value;
         switch (field.name) {
             case "cpf":
                 (!isCpfFormat(field.value))
@@ -25,6 +26,19 @@ function validateFieldsFormat(fields) {
                     ? field.offsetParent.lastElementChild.innerHTML = "Digite um email válido"
                     : console.log("campo Email Validado");
                 break;
+        }
+    }
+}
+
+/**
+ *
+ * @param fields Os campos que serão checados
+ */
+function EmptyFields(fields) {
+    for (value of fields) {
+        const field = value;
+        if (isEmptyValue(field.value)) {
+            field.offsetParent.lastElementChild.innerHTML = "Campo Obrigatório!";
         }
     }
 }
@@ -91,4 +105,18 @@ function isCpfFormat(cpf) {
     return RegExp.test(cpf);
 }
 
-export default validateFieldsFormat;
+/**
+ *
+ * @param value Valor para comparação com uma string vazia ou null
+ * @returns {boolean} retorna true se a string está vazia
+ */
+function isEmptyValue(value) {
+    if (value === "" || value == null) {
+        return true;
+    }
+}
+
+module.exports = {
+    EmptyFields,
+    FieldsFormat
+}

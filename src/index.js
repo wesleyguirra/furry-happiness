@@ -1,5 +1,6 @@
-import validateFormat from 'validators/format';
-import validateEmpty from 'validators/empty-fields';
+import "babel-polyfill";
+import { EmptyFields, FieldsFormat } from './lib/validate';
+
 const form = document.getElementById("formulario_teste");
 
 /**
@@ -21,14 +22,14 @@ if (form.addEventListener) {
  *
  * @param form Recebe o formulário que será validado
  */
-function validateForm (form) {
+function validateForm(form) {
     /**
      *
      * @type {*[]} Array com os objetos dos campos do formulário
      */
     const form_fields = [].slice.call(form.querySelectorAll('select, input:not([type=radio]):not([type=checkbox])') || []);
 
-    validateEmpty(form_fields);
+    EmptyFields(form_fields);
 
-    validateFormat(form_fields);
+    FieldsFormat(form_fields);
 }
