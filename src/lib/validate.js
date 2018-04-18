@@ -3,8 +3,7 @@
  * @param fields Os campos que serão validados
  */
 function FieldsFormat(fields) {
-    for (value of fields) {
-        const field = value;
+    for (const field of fields) {
         switch (field.name) {
             case "cpf":
                 (!isCpfFormat(field.value))
@@ -35,8 +34,8 @@ function FieldsFormat(fields) {
  * @param fields Os campos que serão checados
  */
 function EmptyFields(fields) {
-    for (value of fields) {
-        const field = value;
+    debugger
+    for (const field of fields) {
         if (isEmptyValue(field.value)) {
             field.offsetParent.lastElementChild.innerHTML = "Campo Obrigatório!";
         }

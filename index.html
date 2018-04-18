@@ -13,7 +13,7 @@
             <div class="col-md-12">
 
 
-                <form name="form_test" id="formulario_teste" onsubmit="validateForm()">
+                <form name="form_test" id="formulario_teste">
 
 
                     <div class="form-row">
@@ -21,20 +21,20 @@
 
                         <div id="frm_nome" class="form-group col-md-6">
                             <label>Nome</label>
-                            <input id="name" name="name" type="text" class="form-control" placeholder="Digite seu nome" >
-                            <small id="msg_name"></small>
+                            <input id="nome" name="nome" type="text" class="form-control" placeholder="Digite seu nome" >
+                            <small></small>
                         </div>
 
                         <div id="frm_email" class="form-group col-md-6">
                             <label>Email</label>
-                            <input id="email" type="email" class="form-control" placeholder="Digite seu email">
-                            <small id="msg_email"></small>
+                            <input id="email" name="email" type="email" class="form-control" placeholder="Digite seu email">
+                            <small></small>
                         </div>
 
                         <div id="frm_cpf" class="form-group col-md-6">
                             <label>CPF</label>
-                            <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite seu cpf">
-                            <small id="msg_cpf"></small>
+                            <input id="cpf" name="cpf" type="text" class="form-control" placeholder="Digite seu cpf">
+                            <small></small>
                         </div>
 
 
@@ -126,7 +126,7 @@
                     <button type="reset" class="btn btn-light">limpar</button>
 
 
-                    <button type="button" onclick="validateForm(form_test)" class="btn btn-primary">Enviar</button>
+                    <button type="button" id="form_button" class="btn btn-primary">Enviar</button>
 
 
 
@@ -144,7 +144,7 @@
 
     </div>
 
-    <script src="dist/index.js"></script>
+    <script src="./dist/index.js"></script>
 
 </body>
 </html>
