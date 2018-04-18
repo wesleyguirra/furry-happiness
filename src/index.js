@@ -15,14 +15,14 @@ document.querySelector('#form_button').onclick = function () {
  * Adicionado EventListener para capturar o envio do form com enter
  */
 if (form.addEventListener) {
-    form.addEventListener("submit", validateForm(form));
+    //form.addEventListener("submit", validateForm(form));
 } else if (form.attachEvent) {
     /*
      * O addEventListener não é suportado em versões mais antigas do IE,
      * por isso estou verificando o attachEvent também.
      * https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Browser_compatibility
      */
-    form.attachEvent("onsubmit", validateForm(form));
+    //form.attachEvent("onsubmit", validateForm(form));
 }
 
 /**

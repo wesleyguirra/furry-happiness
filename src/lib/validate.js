@@ -8,22 +8,22 @@ function FieldsFormat(fields) {
             case "cpf":
                 (!isCpfFormat(field.value))
                     ? field.offsetParent.lastElementChild.innerHTML = "Formato de CPF Inválido"
-                    : console.log("campo CPF Validado");
+                    : field.offsetParent.lastElementChild.innerHTML = "";
                 break;
-            case "name":
+            case "nome":
                 (!isFullName(field.value))
                     ? field.offsetParent.lastElementChild.innerHTML = "Digite o Nome Completo"
-                    : console.log("campo Nome Validado");
+                    : field.offsetParent.lastElementChild.innerHTML = "";
                 break;
             case "obs":
                 (!isLengthSixthy(field.value))
                     ? field.offsetParent.lastElementChild.innerHTML = "Máximo de caracteres excedido: " + field.value.length
-                    : console.log("campo Obs Validado");
+                    : field.offsetParent.lastElementChild.innerHTML = "";
                 break;
             case "email":
                 (!isValidEmail(field.value))
                     ? field.offsetParent.lastElementChild.innerHTML = "Digite um email válido"
-                    : console.log("campo Email Validado");
+                    : field.offsetParent.lastElementChild.innerHTML = " ";
                 break;
         }
     }
@@ -34,11 +34,11 @@ function FieldsFormat(fields) {
  * @param fields Os campos que serão checados
  */
 function EmptyFields(fields) {
-    debugger
     for (const field of fields) {
-        if (isEmptyValue(field.value)) {
-            field.offsetParent.lastElementChild.innerHTML = "Campo Obrigatório!";
-        }
+        isEmptyValue(field.value)
+            ? field.offsetParent.lastElementChild.innerHTML = "Campo Obrigatório!"
+            : field.offsetParent.lastElementChild.innerHTML = "";
+
     }
 }
 
@@ -77,7 +77,7 @@ function isValidEmail(email) {
      * seguido de ponto (\.);
      * seguido (e finalizado por no mínimo duas letras (extensão do dominio).
      */
-    const RegExp = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/;
+    const RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     return RegExp.test(email);
 }
